@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <change-set release="3.0">
+<<<<<<< HEAD
 
     <change number="1">
         <description>
@@ -309,5 +310,23 @@
 				DELETE FROM SEQUENCE;
 			]]></sql>
 		</rollback>
+=======
+    <change number="4">
+        <description>
+          Add new dog bichon type
+        </description>
+        <sql separator=";"><![CDATA[
+			INSERT INTO PRODUCT VALUES ('K9-BC-01','DOGS', 'Bichon','<image src="../images/dog7.gif">Beautiful puppy');
+			INSERT INTO  ITEM (ITEMID, PRODUCTID, LISTPRICE, UNITCOST, SUPPLIER, STATUS, ATTR1) VALUES('EST-29','K9-BC-01',199.99, 120.00,1,'P','Female Puppy');
+			INSERT INTO INVENTORY (ITEMID, QTY ) VALUES ('EST-29',10000);
+        ]]></sql>
+        <rollback>
+    	    <sql separator=";"><![CDATA[
+        		DELETE FROM INVENTORY WHERE ITEMID = 'EST-29';
+        		DELETE FROM ITEM WHERE ITEMID = 'EST-29';
+        		DELETE FROM PRODUCT WHERE PRODUCTID = 'K9-BC-01';
+	        ]]></sql>
+        </rollback>
+>>>>>>> 0fdf4f8ab55db20212b6affaf4eff26d7b071dee
     </change>
 </change-set>
